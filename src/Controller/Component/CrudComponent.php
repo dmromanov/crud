@@ -746,7 +746,7 @@ class CrudComponent extends Component
                 throw new ActionNotConfiguredException(sprintf('Action "%s" has not been mapped', $name));
             }
 
-            /** @var class-string<\Crud\Action\BaseAction>|null */
+            /** @var class-string<\Crud\Action\BaseAction>|null $className */
             $className = App::className($config['className'], 'Action', 'Action');
             if (empty($className)) {
                 throw new MissingActionException('Could not find action class: ' . $config['className']);
