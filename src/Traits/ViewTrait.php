@@ -19,7 +19,7 @@ trait ViewTrait
      */
     public function view(mixed $view = null): mixed
     {
-        if (empty($view)) {
+        if ($view === null) {
             return $this->getConfig('view') ?: $this->_request()->getParam('action');
         }
 

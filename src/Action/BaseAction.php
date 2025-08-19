@@ -131,9 +131,9 @@ abstract class BaseAction extends BaseObject
         $crud = $this->_crud();
 
         $config = $this->getConfig('messages.' . $type);
-        if (empty($config)) {
+        if (!$config) {
             $config = $crud->getConfig('messages.' . $type);
-            if (empty($config)) {
+            if (!$config) {
                 throw new Exception(sprintf('Invalid message type "%s"', $type));
             }
         }
@@ -280,7 +280,7 @@ abstract class BaseAction extends BaseObject
             return $this->setConfig('name', $value);
         }
 
-        if (empty($this->_config['name'])) {
+        if (!$this->getConfig('name')) {
             $this->setConfig('name', $this->_deriveResourceName());
         }
 

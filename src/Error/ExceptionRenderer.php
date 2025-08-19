@@ -98,7 +98,7 @@ class ExceptionRenderer extends WebExceptionRenderer
 
         $viewVars = $this->controller->viewBuilder()->getVars();
         $serialize = $this->controller->viewBuilder()->getOption('serialize');
-        if (!empty($serialize)) {
+        if ($serialize) {
             foreach ($serialize as $v) {
                 $data[$v] = $viewVars[$v];
             }

@@ -47,7 +47,7 @@ class RelatedModelsListener extends BaseListener
         }
 
         $models = $this->models();
-        if (empty($models)) {
+        if (!$models) {
             return;
         }
 
@@ -82,7 +82,7 @@ class RelatedModelsListener extends BaseListener
     {
         $models = $this->models($action);
 
-        if (empty($models)) {
+        if (!$models) {
             return;
         }
 
@@ -149,7 +149,7 @@ class RelatedModelsListener extends BaseListener
             return $this->getAssociatedByType(['oneToOne', 'manyToMany', 'manyToOne']);
         }
 
-        if (empty($settings)) {
+        if (!$settings) {
             return [];
         }
 

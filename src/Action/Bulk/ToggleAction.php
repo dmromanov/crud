@@ -47,8 +47,7 @@ class ToggleAction extends BaseAction
      */
     protected function _handle(): ?Response
     {
-        $field = $this->getConfig('field');
-        if (empty($field)) {
+        if (!$this->getConfig('field')) {
             throw new ActionNotConfiguredException('No field value specified');
         }
 

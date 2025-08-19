@@ -139,7 +139,7 @@ trait ProxyTrait
      */
     protected function _entity(array $data = [], array $options = []): EntityInterface
     {
-        if ($this->_entity && empty($data)) {
+        if ($this->_entity && $data === []) {
             return $this->_entity;
         }
 

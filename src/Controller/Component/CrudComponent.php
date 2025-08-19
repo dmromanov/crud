@@ -248,7 +248,7 @@ class CrudComponent extends Component
         $this->_action = $controllerAction ?? $this->_action;
 
         $action = $this->_action;
-        if (empty($args)) {
+        if ($args === []) {
             $args = $this->getController()->getRequest()->getParam('pass');
         }
 
@@ -548,7 +548,7 @@ class CrudComponent extends Component
         $Subject = $data instanceof Subject ? $data : $this->getSubject($data ?? []);
         $Subject->addEvent($eventName);
 
-        if (!empty($this->_config['eventLogging'])) {
+        if ($this->getConfig('eventLogging')) {
             $this->logEvent($eventName, $Subject);
         }
 
@@ -705,13 +705,13 @@ class CrudComponent extends Component
         if (!isset($this->_listenerInstances[$name])) {
             $config = $this->getConfig('listeners.' . $name);
 
-            if (empty($config)) {
+            if (!$config) {
                 throw new ListenerNotConfiguredException(sprintf('Listener "%s" is not configured', $name));
             }
 
             /** @var class-string<\Crud\Listener\BaseListener>|null $className */
             $className = App::className($config['className'], 'Listener', 'Listener');
-            if (empty($className)) {
+            if (!$className) {
                 throw new MissingListenerException('Could not find listener class: ' . $config['className']);
             }
 
@@ -742,13 +742,13 @@ class CrudComponent extends Component
         if (!isset($this->_actionInstances[$name])) {
             $config = $this->getConfig('actions.' . $name);
 
-            if (empty($config)) {
+            if (!$config) {
                 throw new ActionNotConfiguredException(sprintf('Action "%s" has not been mapped', $name));
             }
 
             /** @var class-string<\Crud\Action\BaseAction>|null $className */
             $className = App::className($config['className'], 'Action', 'Action');
-            if (empty($className)) {
+            if (!$className) {
                 throw new MissingActionException('Could not find action class: ' . $config['className']);
             }
 

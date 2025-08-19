@@ -74,7 +74,7 @@ trait CrudTestTrait
             $actual = $actual->getEvents();
         }
 
-        if (empty($actual)) {
+        if (!$actual) {
             throw new Exception('assertEvents: Expected actual to be not-empty');
         }
 

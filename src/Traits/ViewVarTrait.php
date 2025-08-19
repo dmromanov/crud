@@ -40,7 +40,7 @@ trait ViewVarTrait
      */
     public function viewVar(mixed $name = null): mixed
     {
-        if (empty($name)) {
+        if ($name === null) {
             return $this->getConfig('viewVar') ?: $this->_deriveViewVar();
         }
 

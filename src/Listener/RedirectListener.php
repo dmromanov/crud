@@ -113,7 +113,7 @@ class RedirectListener extends BaseListener
         $subject = $event->getSubject();
 
         $redirects = $this->_action()->redirectConfig();
-        if (empty($redirects)) {
+        if (!$redirects) {
             return;
         }
 
